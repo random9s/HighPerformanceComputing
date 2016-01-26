@@ -3,7 +3,7 @@ PROG = hw0
 SRC = main.cpp 
 CLASS = CSVReader.cpp
 OBJ = main.o #Add other object files
-CFLAGS = -c -O2
+CFLAGS = -c -O2 -Wno-deprecated 
 DEPS = CSVReader.h 
 
 #All creates an executable
@@ -29,5 +29,6 @@ $(PROG): $(OBJ)
 clean:
 	rm -f *.o hw0
 
-tar:
-	tar czvf jpvc4_h0.tgz $(SRC) 
+run:
+	make	
+	./hw0

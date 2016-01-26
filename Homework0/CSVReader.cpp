@@ -1,16 +1,13 @@
 #include<iostream>
 #include<fstream>
-#include<../stl/hash_map.h>
 #include "CSVReader.h"
 
-void CSVReader::fOpen(){}
+using namespace std;
 
-void CSVReader::fClose(){}
-
-hash_map<const char*, int> parse(){
-    hash_map<const char*, int> data;
-
-    data["blah"] = 23.210;
-
-    return data;
+static hash_map<const char*, vector<float>, hash<const char*>, eqstr> CSVReader::parse(string csvFileName){
+	hash_map<const char*, vector<float>, hash<const char*>, eqstr> data;
+	vector<float> V;
+	V.push_back(32.2363);
+	data["hello"] = V;
+	return data;
 }
