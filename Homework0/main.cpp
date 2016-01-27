@@ -1,35 +1,28 @@
 #include<iostream>
-#include<hash_map>
+#include<unordered_map>
+#include<algorithm>
 #include<string>
 #include<vector>
 #include<fstream>
 #include<sstream>
-#include<string.h>
+#include<chrono>
  
 using namespace std;
-using namespace __gnu_cxx;
-
-struct eqstr
-{
-  bool operator()(const char* s1, const char* s2) const
-  {
-    return strcmp(s1, s2) == 0;
-  }
-};
 
 int main()
 {
-  hash_map<const char*, vector<float>, hash<const char*>, eqstr> data; 
+  unordered_map <string, vector<float> > data;  
   vector<float> V;
-
   ifstream infile("HPC_DATA.csv");
-
+  std::chrono::time_point<std::chrono::system_clock> start, end;
   string line;
   int lineCount = 0;
-
+  int elemCount = 0;
   vector<string> keyNames;
   
   cout << "Parsing..." << endl;
+  start = std::chrono::system_clock::now(); 
+  
   while(getline(infile, line))
   {
       istringstream iss(line);
@@ -44,21 +37,31 @@ int main()
       while (getline(iss, currentWord, ',')) {
          float currentValue = ::atof(currentWord.c_str());
          currentVector.push_back(currentValue); 
+         elemCount++; 
       }
    
-      const char *key = filename.c_str();
-      data[key] = currentVector;
+      data[filename] = currentVector;
       lineCount++;
   }
 
-  cout << "Parse time: " << endl; 
-  cout << "Parsed line count is: " << lineCount << endl;
+  end = std::chrono::system_clock::now(); 
+  std::chrono::duration<double> parse_duration = end-start;
+
+  start = std::chrono::system_clock::now();
 
   for(vector<string>::iterator it = keyNames.begin(); it != keyNames.end(); ++it) {
-    const char *key = (*it).c_str();
-    vector<float> temp = data[key];
-    float min = *min_element(temp.begin(), temp.end());
-    float max = *max_element(temp.begin(), temp.end()); 
-    cout << "Max is: " << max << " Min is: " << min << endl; 
+    vector<float> temp = data[*it];
+    auto result = minmax_element(temp.begin(), temp.end());
+    cout << "min element is: " << *result.first << " max element is: " << *result.second << endl; 
   }
+
+  end = std::chrono::system_clock::now();
+  std::chrono::duration<double> minmax_duration = end-start; 
+
+  cout << "\nStatistics" << endl;
+  cout << "-----------" << endl; 
+  cout << "Parse time: " << parse_duration.count() << endl;
+  cout << "Parsed line count: " << lineCount << endl;
+  cout << "Data entry count: " << elemCount << endl;
+  cout << "Max min time: " << minmax_duration.count() << endl; 
 } 

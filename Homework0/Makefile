@@ -3,7 +3,7 @@ PROG = hw0
 SRC = main.cpp 
 CLASS = CSVReader.cpp
 OBJ = main.o #Add other object files
-CFLAGS = -c -O2 -Wno-deprecated 
+CFLAGS = -std=c++11 -c -O2 
 DEPS = CSVReader.h 
 
 #All creates an executable
@@ -19,11 +19,6 @@ CSVReader.o: $(CLASS) $(DEPS)
 #executable build
 $(PROG): $(OBJ)
 	$(CC) -o $(PROG) $(OBJ) -lm
-
-.suffixes: .C
-
-.C.o:
-	$(CC) $(CFLAGS) -c $*.c
 
 #remove everything
 clean:
