@@ -4,7 +4,6 @@ SRC = main.cpp
 CLASS = CSVReader.cpp
 OBJ = main.o #Add other object files
 CFLAGS = -std=c++11 -c -O2 
-DEPS = CSVReader.h 
 
 #All creates an executable
 all: $(PROG)
@@ -12,9 +11,6 @@ all: $(PROG)
 #create object files
 main.o: $(SRC)
 	$(CC) $(CFLAGS) $(SRC)
-
-CSVReader.o: $(CLASS) $(DEPS)
-	$(CC) $(CFLAGS) $(CLASS)
 
 #executable build
 $(PROG): $(OBJ)
