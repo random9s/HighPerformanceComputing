@@ -1,5 +1,5 @@
 # set this to what I want
-ENV_HPC_OPTS = -O3
+#ENV_HPC_OPTS = 
 OTHER_FLAGS=$(ENV_HPC_OPTS)
 
 # Standard all target

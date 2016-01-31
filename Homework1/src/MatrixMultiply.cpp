@@ -1,5 +1,4 @@
 #include "MatrixMultiply.hpp"
-
 #include <exception>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/matrix_proxy.hpp>
@@ -15,8 +14,8 @@ jpvc4::MatrixMultiply::~MatrixMultiply()
 	;
 }
 
-
-jpvc4::FloatMatrix jpvc4::MatrixMultiply::operator()(const jpvc4::FloatMatrix& lhs, const jpvc4::FloatMatrix& rhs) const
+/*
+inline jpvc4::FloatMatrix jpvc4::MatrixMultiply::operator()(const jpvc4::FloatMatrix& lhs, const jpvc4::FloatMatrix& rhs) const
 {
 	// Verify acceptable dimensions
 	if (lhs.size2() != rhs.size1())
@@ -33,7 +32,7 @@ jpvc4::FloatMatrix jpvc4::MatrixMultiply::operator()(const jpvc4::FloatMatrix& l
 	
 	return result;
 }
-
+*/
 jpvc4::FloatMatrix jpvc4::MatrixMultiply::multiply(const jpvc4::FloatMatrix& lhs, const jpvc4::FloatMatrix& rhs) const
 {
 	// Verify acceptable dimensions
