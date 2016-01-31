@@ -24,10 +24,12 @@ public:
 
 		jpvc4::FloatMatrix result(lhs.size1(),rhs.size2());
 
+		unsigned int lhs_row = lhs.size1(), lhs_column = lhs.size2(), rhs_column = rhs.size2();
+
 		// YOUR ALGORIHM WITH COMMENTS GOES HERE:
-		for(unsigned int i=0; i < lhs.size1(); i++)
-			for(unsigned int j=0; j < lhs.size2(); j++)
-				for(unsigned int k=0; k < rhs.size2(); k++)
+		for(unsigned int i=0; i < lhs_row; ++i)
+			for(unsigned int j=0; j < lhs_column; ++j)
+				for(unsigned int k=0; k < rhs_column; ++k)
 					result(i, k) += lhs(i, j) * rhs(j, k); 
 		
 		return result;

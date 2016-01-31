@@ -1,9 +1,10 @@
 # set this to what I want
-#ENV_HPC_OPTS = 
+ENV_HPC_OPTS = -O3 
 OTHER_FLAGS=$(ENV_HPC_OPTS)
 
 # Standard all target
 all: hw1
+	@echo "After build, type make valgrind, to run valgrind analysis"
 
 # HW 1
 hw1: hw1.o MatrixMultiply.o
@@ -18,4 +19,5 @@ MatrixMultiply.o : MatrixMultiply.hpp MatrixMultiply.cpp
 clean:
 	rm -f *.o hw1
 
-
+valgrind:
+	valgrind --track-origins=yes ./hw1
