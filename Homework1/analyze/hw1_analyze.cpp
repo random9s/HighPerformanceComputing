@@ -8,7 +8,7 @@
 #include "../src/FloatMatrix.hpp"
 #include "../src/MatrixMultiply.hpp"
 
-void initRandomMatrix(scottgs::FloatMatrix& m);
+void initRandomMatrix(jpvc4::FloatMatrix& m);
 
 int main(int argc, char * argv[])
 {
@@ -62,7 +62,7 @@ int main(int argc, char * argv[])
 	// Test functor : Your implementation
 	// ***********************************
 
-	scottgs::MatrixMultiply mm;
+	jpvc4::MatrixMultiply mm;
 
 	for (std::vector<std::pair<std::pair<unsigned short,unsigned short>, std::pair<unsigned short,unsigned short> > >::const_iterator t=testList.begin();
 		t!=testList.end();++t)
@@ -71,8 +71,8 @@ int main(int argc, char * argv[])
 		// instantiate matrices, then randomize
 		std::pair<unsigned short,unsigned short> lp = t->first;
 		std::pair<unsigned short,unsigned short> rp = t->second;
-		scottgs::FloatMatrix l(lp.first,lp.second);
-		scottgs::FloatMatrix r(rp.first,rp.second);
+		jpvc4::FloatMatrix l(lp.first,lp.second);
+		jpvc4::FloatMatrix r(rp.first,rp.second);
 		initRandomMatrix(l);
 		initRandomMatrix(r);
 
@@ -82,7 +82,7 @@ int main(int argc, char * argv[])
 		for (unsigned int i = 0; i < ITR; ++i)
 		{
 			// This is an assignemnt of a call to a object functor;
-			scottgs::FloatMatrix p = mm(l,r);
+			jpvc4::FloatMatrix p = mm(l,r);
 		}
                 std::chrono::high_resolution_clock::time_point stop = c.now();
 		double avgMs = (double) std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() / (1000000 * ITR);
@@ -113,8 +113,8 @@ int main(int argc, char * argv[])
 		// instantiate matrices, then randomize
 		std::pair<unsigned short,unsigned short> lp = t->first;
 		std::pair<unsigned short,unsigned short> rp = t->second;
-		scottgs::FloatMatrix l(lp.first,lp.second);
-		scottgs::FloatMatrix r(rp.first,rp.second);
+		jpvc4::FloatMatrix l(lp.first,lp.second);
+		jpvc4::FloatMatrix r(rp.first,rp.second);
 		initRandomMatrix(l);
 		initRandomMatrix(r);
 
@@ -123,7 +123,7 @@ int main(int argc, char * argv[])
                 std::chrono::high_resolution_clock::time_point start = c.now();
                 for (unsigned int i = 0; i < ITR; ++i)
 		{
-			scottgs::FloatMatrix p = mm.multiply(l,r);
+			jpvc4::FloatMatrix p = mm.multiply(l,r);
 		}
                 std::chrono::high_resolution_clock::time_point stop = c.now();
 		double avgMs = (double) std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() / (1000000 * ITR);
@@ -152,7 +152,7 @@ int main(int argc, char * argv[])
 	// ---------------------------------------------
 }
 
-void initRandomMatrix(scottgs::FloatMatrix& m)
+void initRandomMatrix(jpvc4::FloatMatrix& m)
 {
 	// Initialize each element.
 	// See discussion board for better way, 

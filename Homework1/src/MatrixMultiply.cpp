@@ -26,8 +26,11 @@ jpvc4::FloatMatrix jpvc4::MatrixMultiply::operator()(const jpvc4::FloatMatrix& l
 
 
 	// YOUR ALGORIHM WITH COMMENTS GOES HERE:
-
-
+	for(unsigned int i=0; i < lhs.size1(); i++)
+		for(unsigned int j=0; j < lhs.size2(); j++)
+			for(unsigned int k=0; k < rhs.size2(); k++)
+				result(i, k) += lhs(i, j) * rhs(j, k); 
+	
 	return result;
 }
 
