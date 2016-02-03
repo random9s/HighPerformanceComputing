@@ -1,5 +1,5 @@
 # set this to what I want
-ENV_HPC_OPTS = -O3 
+ENV_HPC_OPTS = -O3 -ftree-vectorize -funroll-loops -ffast-math 
 OTHER_FLAGS=$(ENV_HPC_OPTS)
 
 # Standard all target

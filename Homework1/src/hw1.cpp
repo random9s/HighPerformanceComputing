@@ -38,6 +38,7 @@ int main(int argc, char * argv[])
 	er(2,0) = 47; er(2,1) = 60; er(2,2) = 73;
 	er(3,0) = 61; er(3,1) = 78; er(3,2) = 95;
 
+
 	jpvc4::MatrixMultiply mm;
 	jpvc4::FloatMatrix result = mm(l42,r23);
 	std::cout << "Result of " << std::endl << l42 << std::endl
