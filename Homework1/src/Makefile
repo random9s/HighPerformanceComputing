@@ -1,5 +1,17 @@
 # set this to what I want
-ENV_HPC_OPTS = -O3 -ftree-vectorize -funroll-loops -ffast-math -fstrict-aliasing 
+ENV_HPC_OPTS = -march=native \
+			   -O3 \
+			   -m64 \
+			   -DNDEBUG \
+			   -mfpmath=sse \
+			   -msse4.2 \
+			   -flto \
+			   -ffast-math \
+			   -fmerge-all-constants \
+			   -fno-unsafe-math-optimizations \
+			   -funroll-loops \
+			   -ftree-vectorize \
+			   -fstrict-aliasing 
 OTHER_FLAGS=$(ENV_HPC_OPTS)
 
 # Standard all target
