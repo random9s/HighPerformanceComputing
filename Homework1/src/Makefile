@@ -1,5 +1,5 @@
 # set this to what I want
-ENV_HPC_OPTS = -O3 -ftree-vectorize -funroll-loops -ffast-math 
+ENV_HPC_OPTS = -O3 -ftree-vectorize -funroll-loops -ffast-math -fstrict-aliasing 
 OTHER_FLAGS=$(ENV_HPC_OPTS)
 
 # Standard all target
